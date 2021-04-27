@@ -4,16 +4,20 @@ class User < ApplicationRecord
 
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+
+  attr_accessor :password
   
   has_many :questions
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
 
-  attr_accessor :password
-
   validates_presence_of :password, on: :create
   validates_confirmation_of :password
+
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  validates :username, length: { maximum: 40 }
+  validates :username, format: { with: /\A^[a-zA-Z0-9_]*$\z/ }
 
   before_save :encrypt_password
 
