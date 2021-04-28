@@ -1,30 +1,28 @@
 require 'openssl'
 
 class User < ApplicationRecord
-
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
+  VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_USERNAME = /\A[a-zA-Z0-9_]*\z/
 
   attr_accessor :password
-  
+
   has_many :questions
 
-  validates :email, :username, presence: true
-  validates :email, :username, uniqueness: true
+  before_validation { self.username = username.downcase }
+  before_save :encrypt_password 
+  before_save { self.username = username.downcase }
 
-  validates_presence_of :password, on: :create
-  validates_confirmation_of :password
+  validates :password, presence:true, on: :create, confirmation: true
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL }
+  validates :username, presence: true, uniqueness: true, length: { maximum: 40 }, format: { with: VALID_USERNAME }
 
-  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :username, length: { maximum: 40 }
-  validates :username, format: { with: /\A^[a-zA-Z0-9_]*$\z/ }
-
-  before_save :encrypt_password
+  private
 
   def encrypt_password
     if self.password.present?
       self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
-
       self.password_hash = User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(self.password, self.password_salt, ITERATIONS, DIGEST.length, DIGEST))
     end
   end
@@ -42,5 +40,4 @@ class User < ApplicationRecord
       nil
     end
   end
-
 end
