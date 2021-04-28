@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
   before_validation { self.username = username.downcase }
   before_save :encrypt_password 
-  before_save { self.username = username.downcase }
 
   validates :password, presence:true, on: :create, confirmation: true
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL }
