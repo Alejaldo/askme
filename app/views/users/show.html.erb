@@ -37,6 +37,14 @@
 
 <div class="column-3-4">
   <div class="user-questions buffer-both">
+    <p class="user-questions-quantity">
+      Всего <%= @questions.size %> <%= inclination(@questions.size, 'вопрос', 'вопроса', 'вопросов') %>:
+    </p>
+  </div>  
+</div>
+
+<div class="column-3-4">
+  <div class="user-questions buffer-both">
     <div class="questions-list">
       <% @questions.each do |question| %>
         <%= render partial: 'questions/question', object: question %>
