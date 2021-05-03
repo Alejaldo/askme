@@ -3,6 +3,10 @@
     <%= @user.name %>
   </h1>
 
+  <div class="buffer-both">
+    <%= link_to 'Редактировать профиль', edit_user_path(@user) if current_user == @user %>
+  </div>
+
   <div class="user-image-div">
     <%= image_tag user_avatar(@user), class: 'user-image', alt: '[Фото]' %>
   </div>
@@ -38,7 +42,11 @@
 <div class="column-3-4">
   <div class="user-questions buffer-both">
     <p class="user-questions-quantity">
-      Всего <%= @questions.size %> <%= inclination(@questions.size, 'вопрос', 'вопроса', 'вопросов') %>:
+      <% if !@questions.nil? %>
+        Всего <%= @questions.size %> <%= inclination(@questions.size, 'вопрос', 'вопроса', 'вопросов') %>:
+      <% else %>
+        Пока нет вопросов, Вы можете быть первым.
+      <% end %>
     </p>
   </div>  
 </div>
@@ -46,8 +54,10 @@
 <div class="column-3-4">
   <div class="user-questions buffer-both">
     <div class="questions-list">
-      <% @questions.each do |question| %>
-        <%= render partial: 'questions/question', object: question %>
+      <% if !@questions.nil? %>
+        <% @questions.each do |question| %>
+          <%= render partial: 'questions/question', object: question %>
+        <% end %>
       <% end %>
     </div>
   </div>
