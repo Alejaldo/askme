@@ -23,12 +23,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find params[:id]
   end
 
   def update
-    @user = User.find params[:id]
-
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Данные глобалиста обновлены'
     else
@@ -37,8 +34,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find params[:id]
-    @question = @user.questions.order(created_at: :desc)
+    @questions = @user.questions.order(created_at: :desc)
     @new_question = @user.questions.build
   end
 
