@@ -13,7 +13,6 @@ gem 'bootsnap',   '1.7.2', require: false
 
 gem 'jquery-rails'
 gem 'uglifier'
-gem 'rails_12factor'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
