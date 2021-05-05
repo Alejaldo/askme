@@ -14,11 +14,11 @@ class UsersController < ApplicationController
   def create
     redirect_to root_url, alert: 'Вы уже залогинены' if current_user.present?
     @user = User.new(user_params)
-    
+
     if @user.save
       redirect_to root_url, notice: 'Глобалист успешно зарегистрирован с системе!'
     else
-      render 'new' 
+      render 'new'
     end
   end
 
@@ -29,13 +29,17 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: 'Данные глобалиста обновлены'
     else
-      render 'edit' 
+      render 'edit'
     end
   end
 
   def show
     @questions = @user.questions.order(created_at: :desc)
     @new_question = @user.questions.build
+
+    @questions_count = @questions.count
+    @answers_count = @questions.where.not(answer: nil).count
+    @unanswered_count = @questions_count - @answers_count
   end
 
   private
