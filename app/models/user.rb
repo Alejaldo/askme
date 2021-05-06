@@ -3,7 +3,7 @@ require 'openssl'
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
-  VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   VALID_USERNAME = /\A\w+\z/
 
   attr_accessor :password
@@ -22,8 +22,7 @@ class User < ApplicationRecord
   end
 
   def self.authenticate(email, password)
-    lowercase_email = email.downcase if email.present?
-    user = find_by(email: lowercase_email)
+    user = find_by(email: email&.downcase)
     user if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
   end
 
