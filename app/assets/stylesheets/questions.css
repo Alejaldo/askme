@@ -21,6 +21,14 @@
 
 .question-text {
   color: #005a55;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.question-text-inside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .question-date {
