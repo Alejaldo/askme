@@ -56,3 +56,9 @@
 .question-actions a {
   margin-left: 10px;
 }
+
+.unknown-guest {
+  padding: 2%;
+  background-color: red;
+  color: white;
+}
