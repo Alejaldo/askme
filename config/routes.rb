@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  resources :questions
   root 'users#index'
 
   resources :users, except: [:destroy]
-  resources :sessions, only: [:new, :create, :destroy]
   resources :questions, except: [:show, :new, :index]
 
-  get 'sign_up' => 'users#new'
-  get 'log_out' => 'sessions#destroy'
-  get 'log_in' => 'sessions#new'
+  get '/sign_up', to: 'users#new'
+
+  get '/log_in', to: 'sessions#new'
+  post '/log_in', to: 'sessions#create'
+  delete '/log_out', to: 'sessions#destroy'
 end

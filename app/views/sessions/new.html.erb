@@ -3,19 +3,19 @@
 
   <div class="column-1-2">
     <div class="form">
-      <%= form_with url: sessions_path do %>
+      <%= form_with(url: log_in_path, scope: :session, local: true) do |f| %>
         <div class="form-field">
-          <%= label_tag :email, 'Логин (email)', class: 'form-label' %>
-          <%= text_field_tag :email, params[:email], class: 'form-text-field' %>
+          <%= f.label :email, 'Логин (email)', class: 'form-label' %>
+          <%= f.email_field :email, class: 'form-text-field' %>
         </div>
 
         <div class="form-field">
-          <%= label_tag :password, 'Пароль', class: 'form-label' %>
-          <%= password_field_tag :password, '', class: 'form-text-field' %>
+          <%= f.label :password, 'Пароль', class: 'form-label' %>
+          <%= f.password_field :password, class: 'form-text-field' %>
         </div>
 
         <div class="form-action">
-          <%= submit_tag "Войти", class: 'button button-dark button-small' %>
+          <%= f.submit "Войти", class: 'button button-dark button-small' %>
         </div>
       <% end %>
     </div>
