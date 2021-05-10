@@ -43,6 +43,12 @@ class UsersController < ApplicationController
     @unanswered_count = @questions_count - @answers_count
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Удаление прошло успешно!"
+    redirect_to users_url
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :background_color, :avatar_url)

@@ -4,7 +4,10 @@
   </h1>
 
   <div class="buffer-both">
-    <%= link_to 'Редактировать профиль', edit_user_path(@user) if current_user == @user %>
+    <% if current_user == @user %>
+    <%= link_to 'Редактировать профиль', edit_user_path(@user) %> |
+    <%= link_to 'Удалить профиль', @user, method: :delete, data: { confirm: "Вы уверены?" } %>
+    <% end %>
   </div>
 
   <div class="user-image-div">
