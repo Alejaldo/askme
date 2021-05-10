@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate(params[:session][:email], params[:session][:password])
 
     if user.present?
       reset_session
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    session[:id] = nil
+    session[:user_id] = nil
     redirect_to root_url, notice: 'Вы разлогинились! Приходите еще!'
   end
 end
