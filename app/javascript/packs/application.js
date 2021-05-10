@@ -7,13 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "jquery"
+import "bootstrap"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 require("jquery")
-require("jquery-ui")
 
 $(function(){
   $('#ask-button').click(function(){
@@ -21,4 +22,3 @@ $(function(){
     return false;
   });
 });
-//= require jquery3
