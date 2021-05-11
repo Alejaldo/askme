@@ -31,8 +31,6 @@
   background-color: #d8f2d8;
   padding: 2%;
   color: #005a55;
-  display: grid;
-  grid-template-columns: 5fr 1fr;
 }
 
 .question-text-inside {

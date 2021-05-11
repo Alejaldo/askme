@@ -2,14 +2,10 @@
   <div class="question-content">
     <div class="question-text text-lead">
       <div class="question-text-inside">
-        <% if current_user.present? %>
-          @<%= question.author.username %>
-          <div class="user-image-div user-image-div-super-small">
-            <%= link_to image_tag(user_avatar(question.author), class: 'user-image'), user_path(question.author) %>
-          </div>
-        <% else %>
-          <div class="unknown-guest">Аноним</div>
-        <% end %>
+        @<%= question.author.username %>
+        <div class="user-image-div user-image-div-super-small">
+          <%= link_to image_tag(user_avatar(question.author), class: 'user-image'), user_path(question.author) %>
+        </div>
       </div>
       <div class="question-text-inside">
         "<%= question.text %>"
@@ -20,12 +16,6 @@
       <div class="question-answer text-lead">
         <div class="question-text-inside">
           "<%= question.answer %>"
-        </div>
-        <div class="question-text-inside">
-          @<%= current_user.username %>
-          <div class="user-image-div user-image-div-super-small">
-            <%= link_to image_tag(user_avatar(current_user), class: 'user-image'), user_path(current_user) %>
-          </div>
         </div>
       </div>
     <% end %>
