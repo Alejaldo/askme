@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    @user.destroy
     flash[:success] = "Удаление прошло успешно!"
     redirect_to users_url
   end
