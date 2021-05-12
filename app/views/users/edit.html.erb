@@ -31,7 +31,7 @@
 
       <div class="form-field">
         <%= f.label 'Цвет фона Вашей страницы', class: 'form-label' %>
-        <%= f.color_field :background_color, value: @user.background_color %>
+        <%= f.color_field :background_color, value: "#005a55" %>
       </div>
 
       <div class="buffer-top-large buffer-bottom">
@@ -50,6 +50,10 @@
 
       <div class="form-action buffer-top">
         <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
+      </div>
+
+      <div id="delete-profile">
+        <%= link_to 'Удалить профиль', @user, method: :delete, data: { confirm: "Вы уверены?" } %>
       </div>
     <% end %>
   </div>

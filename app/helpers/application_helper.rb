@@ -3,13 +3,13 @@ module ApplicationHelper
     if user.avatar_url.present?
       user.avatar_url
     else
-      asset_path 'avatar.jpg'
+      asset_path 'default-avatar.png'
     end
   end
 
   def inclination(number, one, few, many)
     return many if (number % 100).between?(11, 14)
-  
+
     case number % 10
     when 1 then one
     when 2..4 then few

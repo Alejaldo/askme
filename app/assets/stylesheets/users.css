@@ -1,10 +1,14 @@
+:root {
+  --default-user-back-color: #005a55;
+}
+
 .users-list-item {
   display: inline-block;
 }
 
 .user-header {
   padding: 20px 0;
-  background: #005a55;
+  background: var(--default-user-back-color);
   color: white;
 }
 
@@ -64,6 +68,12 @@
   text-align: center;
   background-color: red;
   color: white;
+}
+
+#delete-profile {
+  margin-top: 10rem;
+  text-align: center;
+  font-size: 14px;
 }
 
 @media (max-width: 960px) {
