@@ -56,7 +56,9 @@
 }
 
 .unknown-guest {
-  padding: 2%;
-  background-color: red;
+  padding: 2% 4%;
+  background-color: var(--default-user-back-color);
   color: white;
+  width: 100%;
+  text-align: center;
 }
