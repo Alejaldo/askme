@@ -1,6 +1,4 @@
-:root {
-  --default-user-back-color: #005a55;
-}
+$default_user_back_color: #005a55;
 
 .users-list-item {
   display: inline-block;
@@ -8,7 +6,7 @@
 
 .user-header {
   padding: 20px 0;
-  background: var(--default-user-back-color);
+  background: $default_user_back_color;
   color: white;
 }
 

@@ -20,4 +20,12 @@ module ApplicationHelper
   def fa_icon(icon_class)
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
+
+  def user_background_color
+    if @user.background_color.present?
+      @user.background_color
+    else
+      "#005a55"
+    end
+  end
 end
