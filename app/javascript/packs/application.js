@@ -16,9 +16,9 @@ ActiveStorage.start()
 
 require("jquery")
 
-$(function(){
-  $('#ask-button').click(function(){
-    $('#ask-form').slideToggle(300);
-    return false;
-  });
-});
+$(document).on('turbolinks:load', function() {
+  $('#ask-button').click(function() {
+    $('#ask-form').slideToggle(300)
+    return false
+  })
+})
