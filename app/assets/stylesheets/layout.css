@@ -42,3 +42,13 @@ a {
   font-size: 20px;
   color: #dc554f;
 }
+
+.hashtags {
+  text-align: center;
+  padding: 10px;
+}
+
+.hashtags-form {
+  height: 30px;
+  font-size: 25px;
+}

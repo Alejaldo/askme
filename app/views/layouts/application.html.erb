@@ -43,5 +43,10 @@
         <%= yield %>
       </div>
     </div>
+    <div class="hashtags">
+      <%= form_with url: search_path, method: :get, local: true do |form| %>
+        <%= form.text_field :query, value: params[:query], class: 'hashtags-form', placeholder: '#хэштег' %>
+      <% end %>
+    </div>
   </body>
 </html>

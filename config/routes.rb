@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :questions, except: [:show, :new, :index]
 
   get '/sign_up', to: 'users#new'
-
   get '/log_in', to: 'sessions#new'
+  get '/search', to: 'search#index'
   post '/log_in', to: 'sessions#create'
   delete '/log_out', to: 'sessions#destroy'
 end
