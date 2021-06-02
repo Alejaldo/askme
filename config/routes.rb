@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :questions, except: [:show, :new, :index]
+  resources :hash_tag, only: [:show]
 
   get '/sign_up', to: 'users#new'
   get '/log_in', to: 'sessions#new'

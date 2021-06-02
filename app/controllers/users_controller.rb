@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @hash_tags = HashTag.joins(:questions).distinct
   end
 
   def new
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
   end
 
   private
+  
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :name, :username, :background_color, :avatar_url)
   end

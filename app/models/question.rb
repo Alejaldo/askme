@@ -16,9 +16,6 @@ class Question < ApplicationRecord
   end
 
   def extract_hash_tags
-    question_parts = [text, answer].map do |question_part|
-      question_part.scan(/#[[:word:]]+/).map{ |text| text.gsub("#", "") }
-    end
-    question_parts[0] + question_parts[1]
+    "#{text} #{answer}".downcase.scan(/#[[:word:]]+/).map{ |text| text.gsub("#", "") }
   end
 end
