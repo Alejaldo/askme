@@ -7,7 +7,7 @@ class Question < ApplicationRecord
 
   validates :text, presence: true, length: { maximum: 255 }
 
-  after_commit :create_hash_tags, on: :create
+  after_commit :create_hash_tags, on: %i[create update]
 
   def create_hash_tags
     extract_hash_tags.each do |name|
