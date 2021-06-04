@@ -2,7 +2,7 @@ class Question < ApplicationRecord
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
 
-  has_many :question_hash_tags
+  has_many :question_hash_tags, dependent: :destroy
   has_many :hash_tags, through: :question_hash_tags
 
   validates :text, presence: true, length: { maximum: 255 }
@@ -10,12 +10,14 @@ class Question < ApplicationRecord
   after_commit :create_hash_tags, on: %i[create update]
 
   def create_hash_tags
-    extract_hash_tags.each do |name|
-      hash_tags.create(name: name)
+    question_hash_tags.clear
+
+    extract_hash_tags.each do |tag|
+      hash_tags << HashTag.find_or_create_by(name: tag.delete('#'))
     end
   end
 
   def extract_hash_tags
-    "#{text} #{answer}".downcase.scan(/#[[:word:]]+/).map{ |text| text.gsub("#", "") }
+    "#{text} #{answer}".downcase.scan(/#[[:word:]]+/).uniq
   end
 end
