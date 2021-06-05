@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  HASHTAG_FORMAT = /#[[:word:]]+/
+
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
 
@@ -18,6 +20,10 @@ class Question < ApplicationRecord
   end
 
   def extract_hash_tags
-    "#{text} #{answer}".downcase.scan(/#[[:word:]]+/).uniq
+    "#{text} #{answer}".downcase.scan(HASHTAG_FORMAT).uniq
+  end
+
+  def linked_hash_tags
+    "#{text} #{answer}".gsub(HASHTAG_FORMAT) { |tag| link_to tag, hash_tag_path(tag.delete('#').downcase) }
   end
 end

@@ -14,14 +14,14 @@
         <% end %>
       </div>
       <div class="question-text-inside">
-        "<%= question.text %>"
+        <%= linked_hash_tags(question.text) %>
       </div>
     </div>
 
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
         <div class="question-text-inside">
-          "<%= question.answer %>"
+          <%= linked_hash_tags(question.answer) %>
         </div>
       </div>
     <% end %>

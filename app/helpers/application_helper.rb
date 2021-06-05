@@ -28,4 +28,8 @@ module ApplicationHelper
       "#005a55"
     end
   end
+
+  def linked_hash_tags(question_part)
+    sanitize question_part.gsub(/#[[:word:]]+/) { |tag| link_to tag, hash_tag_path(tag.delete('#').downcase) }
+  end
 end
