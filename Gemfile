@@ -13,6 +13,9 @@ gem 'bootsnap',   '1.7.2', require: false
 gem 'jquery-rails'
 gem 'uglifier'
 
+gem 'dotenv-rails'
+gem 'recaptcha'
+
 group :development, :test do
   gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
