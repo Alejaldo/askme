@@ -3,7 +3,7 @@
 
   <div class="column-1-2">
     <div class="form">
-      <%= form_with(url: log_in_path, scope: :session, local: true) do |f| %>
+      <%= form_with(url: session_path, scope: :session, local: true) do |f| %>
         <div class="form-field">
           <%= f.label :email, 'Логин (email)', class: 'form-label' %>
           <%= f.email_field :email, class: 'form-text-field' %>
