@@ -21,6 +21,7 @@ gem 'recaptcha'
 group :development, :test do
   gem 'sqlite3', '1.4.2'
   gem 'byebug',  '11.1.3', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rubocop', require: false
 end
 
 group :development do
