@@ -1,24 +1,22 @@
-# README
+Askme
+======================
+Ryby on Rails Web application for ask questions. Create your account and wait for questions or ask someone else.
+### Link: https://borisjohnson.herokuapp.com/
+----------------------
+## Configuration
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
++ Ruby version: 2.7.2
++ Rails versin: 6.1.3.1
++ Bootstrap 3
++ `recapctha` gem
++ hashtag searching 
++ PostgreSQL (for production)
++ Currently the app has only russian language
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Clone the repo.
+2. Execute `bundle install`.
+3. Execute `rails db:migrate`.
+4. Set up your captcha using [Google service](https://www.google.com/recaptcha/about/) and create `.env` file with `export RECAPTCHA_BOJO_SITE_KEY` (with value of SITE KEY from your Google reCAPTCHA)  and `export RECAPTCHA_BOJO_SECRET_KEY` (with value of SECRET KEY from your Google reCAPTCHA). 
+5. For development environment exec `rails s` and open `localhost:3000` in your browser.  
