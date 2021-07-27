@@ -1,6 +1,7 @@
 Askme
 ======================
-Ryby on Rails Web application for ask questions. Create your account and wait for questions or ask someone else.
+Ruby on Rails Web application for ask questions. Create your account and wait for questions or ask someone else.
+#### Language: ru
 ### Link: https://borisjohnson.herokuapp.com/
 ----------------------
 ## Configuration
