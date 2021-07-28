@@ -15,7 +15,7 @@
  *= require grid
  *= require button
  *= require form
-
+ *= require hash_tag
  *= require layout
  *= require users
  *= require questions
