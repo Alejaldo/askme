@@ -8,6 +8,7 @@ class Question < ApplicationRecord
   validates :text, presence: true, length: { maximum: 255 }
 
   after_commit :create_hash_tags, on: %i[create update]
+  after_destroy :destroy_hash_tags
 
   private
 
@@ -21,5 +22,9 @@ class Question < ApplicationRecord
 
   def extract_hash_tags
     "#{text} #{answer}".downcase.scan(/#[[:word:]]+/).uniq
+  end
+
+  def destroy_hash_tags
+    HashTag.left_joins(:questions).where(questions: { id: nil }).destroy_all
   end
 end
