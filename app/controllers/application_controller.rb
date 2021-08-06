@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
-    render xml: exception, status: 404
-  end
-
   helper_method :current_user
 
   private
