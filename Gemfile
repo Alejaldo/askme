@@ -11,12 +11,11 @@ gem 'turbolinks', '5.2.1'
 gem 'jbuilder',   '2.10.0'
 gem 'bootstrap-sass', '3.4.1'
 gem 'bootsnap',   '1.7.2', require: false
-
 gem 'jquery-rails'
 gem 'uglifier'
-
 gem 'dotenv-rails'
 gem 'recaptcha'
+gem 'where_exists'
 
 group :development, :test do
   gem 'sqlite3', '1.4.2'
