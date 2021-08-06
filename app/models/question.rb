@@ -23,8 +23,4 @@ class Question < ApplicationRecord
   def extract_hash_tags
     "#{text} #{answer}".downcase.scan(/#[[:word:]]+/).uniq
   end
-
-  def destroy_hash_tags
-    HashTag.left_joins(:questions).where(questions: { id: nil }).destroy_all
-  end
 end
