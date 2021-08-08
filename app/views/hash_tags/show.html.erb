@@ -1,6 +1,4 @@
 <div>
   <h3 class="hashtags-header"> Вопросы с хэштегом: <span> #<%= @hash_tag.name %> </span> </h3>
-  <% @questions.each do |question| %>
-    <%= render partial: 'questions/question', object: question %>
-  <% end %>
+  <%= render @questions %>
 </div>
