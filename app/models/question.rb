@@ -12,10 +12,8 @@ class Question < ApplicationRecord
   private
 
   def create_hash_tags
-    question_hash_tags.clear
-
-    extract_hash_tags.each do |tag|
-      hash_tags << HashTag.find_or_create_by(name: tag.delete('#'))
+    self.hash_tags = extract_hash_tags.map do |tag|
+      HashTag.find_or_create_by(name: tag.delete('#'))
     end
   end
 
