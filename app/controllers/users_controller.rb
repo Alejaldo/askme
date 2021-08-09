@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @hash_tags = HashTag.joins(:questions).distinct
+    @hash_tags = HashTag.with_questions_only
   end
 
   def new
