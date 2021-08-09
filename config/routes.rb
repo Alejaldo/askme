@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :questions, except: %i[show new index]
-  resources :hash_tags, only: %i[show]
+  resources :hash_tags, only: %i[show], param: :name
   resource :session, only: %i[new create destroy]
 end
