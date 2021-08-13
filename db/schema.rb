@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_31_123241) do
+ActiveRecord::Schema.define(version: 2021_08_13_134218) do
 
   create_table "hash_tags", force: :cascade do |t|
     t.string "name"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2021_05_31_123241) do
     t.string "password_salt"
     t.string "avatar_url"
     t.string "background_color"
+    t.text "api_token"
+    t.index ["api_token"], name: "index_users_on_api_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
