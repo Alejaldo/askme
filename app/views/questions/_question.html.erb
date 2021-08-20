@@ -3,9 +3,11 @@
     <div class="question-text text-lead">
       <div class="question-text-inside">
         <% if question.author.present? %>
-          @<%= question.author.username %>
-          <div class="user-image-div user-image-div-super-small">
-            <%= link_to image_tag(user_avatar(question.author), class: 'user-image'), user_path(question.author) %>
+          <div id="question-author-info">
+            <div>@<%= question.author.username %></div>
+            <div class="user-image-div user-image-div-super-small">
+              <%= link_to image_tag(user_avatar(question.author), class: 'user-image'), user_path(question.author) %>
+            </div>
           </div>
         <% else %>
           <div class="unknown-guest">
