@@ -52,3 +52,9 @@ a {
   height: 30px;
   font-size: 25px;
 }
+
+@media (max-width: 400px) {
+  .content {
+    padding: 0;
+  }
+}
